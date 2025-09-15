@@ -1,0 +1,54 @@
+
+*{
+    margin: 0;
+
+}
+/* 1. Estilizando o container principal (a barra de navegação) */
+.navbar {
+  display: flex; /* ESSA É A CHAVE! Transforma a nav em um container flexível. */
+  align-items: center; /* Alinha os itens verticalmente ao centro (logo e lista). */
+  background-color: cyan; /* A cor de fundo que você está usando. */
+  padding: 10px;
+  
+}
+
+/* 2. Deixando o logo como está */
+.logo {
+  /* Não precisa de muita coisa aqui, ele já vai ficar à esquerda por padrão. */
+  height: 40px; /* Apenas um exemplo de altura */
+  position: fixed;
+  margin-left: 100px;
+
+  
+  
+}
+
+/* 3. A MÁGICA ACONTECE AQUI! */
+.nav-links {
+  /* Faz a lista crescer para ocupar todo o espaço vazio disponível */
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+
+  /* Agora, transformamos a própria lista em um container flex... */
+  display: flex;
+
+  /* ...para centralizar os itens dela (as <li>) horizontalmente. */
+  justify-content: center;
+
+  /* Remove as bolinhas da lista */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 4. Estilos básicos para os itens da lista */
+.nav-links li {
+  margin: 0 15px; /* Cria um espaçamento entre cada item do menu. */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
