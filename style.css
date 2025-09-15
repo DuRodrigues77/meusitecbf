@@ -1,52 +1,56 @@
-
-*{
-    margin: 0;
-
-}
-/* 1. Estilizando o container principal (a barra de navegação) */
-.navbar {
-  display: flex; /* ESSA É A CHAVE! Transforma a nav em um container flexível. */
-  align-items: center; /* Alinha os itens verticalmente ao centro (logo e lista). */
-  background-color: cyan; /* A cor de fundo que você está usando. */
-  padding: 10px;
-  
-}
-
-/* 2. Deixando o logo como está */
-.logo {
-  /* Não precisa de muita coisa aqui, ele já vai ficar à esquerda por padrão. */
-  height: 40px; /* Apenas um exemplo de altura */
-  position: fixed;
-  margin-left: 100px;
-
-  
-  
-}
-
-/* 3. A MÁGICA ACONTECE AQUI! */
-.nav-links {
-  /* Faz a lista crescer para ocupar todo o espaço vazio disponível */
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-
-  /* Agora, transformamos a própria lista em um container flex... */
-  display: flex;
-
-  /* ...para centralizar os itens dela (as <li>) horizontalmente. */
-  justify-content: center;
-
-  /* Remove as bolinhas da lista */
-  list-style: none;
+/* --- Reset Básico (Boa Prática) --- */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* 4. Estilos básicos para os itens da lista */
-.nav-links li {
-  margin: 0 15px; /* Cria um espaçamento entre cada item do menu. */
+/* --- Estilos da Barra de Navegação --- */
+
+/* 1. Container principal */
+.navbar {
+  background-color: cyan;
+  height: 60px; /* Uma altura definida ajuda no posicionamento */
+
+  /* PASSO 1: A navbar se torna a "âncora" para o posicionamento da lista */
+  position: relative;
+
+  /* Flexbox aqui serve para alinhar verticalmente o que sobrar (o logo) */
+  display: flex;
+  align-items: center;
 }
 
+/* 2. Logo */
+.logo {
+  height: 40px;
+  
+  /* IMPORTANTE: Mude este valor para mover o logo para a direita/esquerda */
+  margin-left: 300px;
+
+  /* z-index garante que o logo fique na camada de cima, caso precise */
+  z-index: 2;
+}
+
+/* 3. Lista com os links de navegação */
+.nav-links {
+  /* PASSO 2: Tira a lista do fluxo normal e a faz "flutuar" */
+  position: absolute;
+  
+  /* Centraliza a lista em relação à NAVBAR inteira, não ao espaço que sobra */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  /* z-index menor para que não fique acima do logo */
+  z-index: 1;
+
+  /* Estilos para alinhar as <li> em linha */
+  display: flex;
+  list-style: none; /* Remove as bolinhas */
+  gap: 30px; /* 'gap' é uma forma moderna de dar espaço entre os itens */
+}
+
+/* 4. Estilos dos links dentro da lista */
 .nav-links a {
   text-decoration: none;
   color: black;
